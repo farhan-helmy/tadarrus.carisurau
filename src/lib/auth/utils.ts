@@ -6,7 +6,9 @@ export type AuthSession = {
     user: {
       id: string;
       name?: string;
-      email?: string;
+      emailAddress?: string;
+      hasImage?: boolean;
+      imageUrl?: string;
     };
   } | null;
 };
@@ -14,13 +16,16 @@ export type AuthSession = {
 export const getUserAuth = async () => {
   // find out more about setting up 'sessionClaims' (custom sessions) here: https://clerk.com/docs/backend-requests/making/custom-session-token
   const { userId, sessionClaims } = auth();
+
   if (userId) {
     return {
       session: {
         user: {
           id: userId,
           name: `${sessionClaims?.firstName} ${sessionClaims?.lastName}`,
-          email: sessionClaims?.email,
+          emailAddress: sessionClaims?.emailAddress,
+          hasImage: sessionClaims?.hasImage,
+          imageUrl: sessionClaims?.imageUrl
         },
       },
     } as AuthSession;

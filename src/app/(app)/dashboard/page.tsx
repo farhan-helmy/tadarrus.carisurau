@@ -4,6 +4,7 @@ import Link from "next/link";
 
 export default async function Home() {
   const userAuth = await getUserAuth();
+  console.log(userAuth)
   return (
     <main className="space-y-6">
       <Link href="/account">
