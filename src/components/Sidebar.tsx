@@ -1,8 +1,10 @@
 import Link from "next/link";
 
-import SidebarItems from "./SidebarItems";import { UserButton } from "@clerk/nextjs";
+import SidebarItems from "./SidebarItems";
+import { UserButton } from "@clerk/nextjs";
 
 import { AuthSession, getUserAuth } from "@/lib/auth/utils";
+import Image from "next/image";
 
 const Sidebar = async () => {
   const session = await getUserAuth();
@@ -12,7 +14,12 @@ const Sidebar = async () => {
     <aside className="h-screen min-w-52 bg-muted hidden md:block p-4 pt-8 border-r border-border shadow-inner">
       <div className="flex flex-col justify-between h-full">
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold ml-4">Logo</h3>
+          <Image
+            src="/logocarisurau.png"
+            alt="logocarisurau"
+            height={80}
+            width={50}
+          />
           <SidebarItems />
         </div>
         <UserDetails session={session} />
@@ -35,7 +42,7 @@ const UserDetails = ({ session }: { session: AuthSession }) => {
         <div className="text-muted-foreground">
           <p className="text-xs">{user.name ?? "John Doe"}</p>
           <p className="text-xs font-light pr-4">
-            {user.email ?? "john@doe.com"}
+            {user.emailAddress ?? "john@doe.com"}
           </p>
         </div>
         <UserButton afterSignOutUrl="/" />
