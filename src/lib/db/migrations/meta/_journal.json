@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1710073028895,
+      "tag": "0000_eager_warhawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1710073389206,
+      "tag": "0001_parched_susan_delgado",
+      "breakpoints": true
+    }
+  ]
+}
